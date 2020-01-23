@@ -25,7 +25,6 @@
     "Library",
     "Rollup",
     "Typescript",
-    "Sass",
     "Storybook"
   ],
   "author": "Harvey Delaney",
@@ -41,6 +40,7 @@
   "devDependencies": {
     "@babel/core": "^7.7.4",
     "@storybook/addon-actions": "^5.2.6",
+    "@storybook/addon-knobs": "^5.3.8",
     "@storybook/addon-links": "^5.2.6",
     "@storybook/addons": "^5.2.6",
     "@storybook/react": "^5.2.6",
@@ -58,10 +58,13 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-peer-deps-external": "^2.2.0",
-    "rollup-plugin-sass": "^1.2.2",
     "rollup-plugin-typescript2": "^0.25.2",
     "sass-loader": "^8.0.0",
+    "styled-components": "^5.0.0",
     "ts-jest": "^24.2.0",
     "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "react-icons": "^3.8.0"
   }
 }

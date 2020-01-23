@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 
-import TestComponent from "./test-component";
+import TestComponent from ".";
 
 describe("Test Component", () => {
   let props: any;
