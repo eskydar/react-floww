@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledLine = styled.line`
-  shape-rendering: crispEdges;
+  stroke: #808292;
 `;
 
 type IProps = {
@@ -13,7 +13,6 @@ type IProps = {
 const Arrows: React.FC<IProps> = ({ amount, maxWidth }) => {
   const renderSingleLine = () => (
     <StyledLine
-      stroke="red"
       x1={maxWidth / 2}
       y1="0"
       x2={maxWidth / 2}
@@ -24,21 +23,20 @@ const Arrows: React.FC<IProps> = ({ amount, maxWidth }) => {
   const renderMultipleLines = () => (
     <>
       <StyledLine
-        stroke="red"
         x1={maxWidth / 2}
         y1="0"
         x2={maxWidth / 2}
         y2="40"
       />
-      <StyledLine stroke="red" x1="0" y1="40" x2={maxWidth} y2="40" />
-      {[...Array(amount + 1)].map((_, i) => {
-        const singleItemWidth = maxWidth / amount;
+      <StyledLine x1="0" y1="40" x2={maxWidth} y2="40" />
+      {[...Array(amount)].map((_, i) => {
+        const singleWidth = maxWidth / (amount - 1);
+        const offset = singleWidth * i;
         return (
           <StyledLine
-            stroke="red"
-            x1={maxWidth - singleItemWidth * i}
+            x1={offset}
             y1="40"
-            x2={maxWidth - singleItemWidth * i}
+            x2={offset}
             y2="80"
             markerEnd="url(#arrow)"
           />
@@ -47,7 +45,7 @@ const Arrows: React.FC<IProps> = ({ amount, maxWidth }) => {
     </>
   );
   return (
-    <svg width={maxWidth}>
+    <svg width={maxWidth} style={{ overflow: "visible" }}>
       <defs>
         <marker
           id="arrow"
@@ -58,7 +56,7 @@ const Arrows: React.FC<IProps> = ({ amount, maxWidth }) => {
           orient="auto"
           markerUnits="strokeWidth"
         >
-          <path d="M0,0 L0,6 L9,3 z" fill="red" />
+          <path d="M0,0 L0,6 L9,3 z" fill="#808292" />
         </marker>
       </defs>
       {amount === 1 && renderSingleLine()}

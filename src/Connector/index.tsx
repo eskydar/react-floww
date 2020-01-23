@@ -11,7 +11,7 @@ const StyledConnector = styled.div`
   transition: all 0.3s cubic-bezier(0.05, 0.03, 0.35, 1);
   transform: scale(1);
   position: absolute;
-  left: calc(50% - 12px);
+  left: calc(50% - 6px);
 
   &:after {
     content: "";

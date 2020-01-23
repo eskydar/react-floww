@@ -7,6 +7,10 @@ import Arrows from "../Arrows";
 
 const width = 320;
 
+const StyledWrapper = styled.div`
+  padding-left: ${props => props.offsetLeft ? width / 2 : 0}px;
+`
+
 const StyledBlock = styled.div`
   width: ${width}px;
   box-shadow: 0px 4px 30px rgba(22, 33, 74, 0.3);
@@ -52,10 +56,10 @@ const TestComponent: React.FC<IProps> = ({
   attaching = false,
   connections = 0
 }) => {
-  const maxWidth = connections > 1 ? (width + 10) * connections : width;
+  const maxWidth = connections > 2 ? (width + 20) * (connections - 1) : width;
   const offsetLeft = connections > 1 ? maxWidth / 2 - width / 2 : 0;
   return (
-    <>
+    <StyledWrapper offsetLeft={connections > 1}>
       <StyledBlock offsetLeft={offsetLeft}>
         <StyledTitle>
           <StyledIconWrapper>
@@ -67,8 +71,7 @@ const TestComponent: React.FC<IProps> = ({
         {attaching && <Connector />}
       </StyledBlock>
       {connections > 0 && <Arrows amount={connections} maxWidth={maxWidth} />}
-      {maxWidth}
-    </>
+    </StyledWrapper>
   );
 };
 
