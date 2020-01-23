@@ -62,7 +62,7 @@ const TestComponent: React.FC<IProps> = ({
       <StyledDescription>{description}</StyledDescription>
       {attaching && <Connector />}
     </StyledBlock>
-    {connections && <Arrows amount={connections} />}
+    {connections > 0 && <Arrows amount={connections} />}
   </>
 );
 

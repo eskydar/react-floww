@@ -5,24 +5,24 @@ type IProps = {
 };
 
 const Arrows: React.FC<IProps> = ({ amount }) => {
-  const width = amount * 160;
   const renderSingleLine = () => (
     <line
       stroke="red"
       x1="160"
       y1="0"
       x2="160"
+      y2="80"
       marker-end="url(#arrow)"
     />
   );
   const renderMultipleLines = () => (
     <>
       <line stroke="red" x1="160" y1="0" x2="160" y2="40" />
-      <line stroke="red" x1="0" y1="40" x2={width} y2="40" />
+      <line stroke="red" x1="0" y1="40" x2="320" y2="40" />
     </>
   );
   return (
-    <svg width={`${width}px`}>
+    <svg width="320px">
       <defs>
         <marker
           id="arrow"
