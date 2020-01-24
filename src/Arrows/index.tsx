@@ -1,6 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
+const StyledSvg = styled.svg`
+  position: absolute;
+  left: calc(calc(-${props => props.width}px + 320px) / 2);
+`
+
 const StyledLine = styled.line`
   stroke: #808292;
 `;
@@ -45,7 +50,7 @@ const Arrows: React.FC<IProps> = ({ amount, maxWidth }) => {
     </>
   );
   return (
-    <svg width={maxWidth} style={{ overflow: "visible" }}>
+    <StyledSvg width={maxWidth} style={{ overflow: "visible" }}>
       <defs>
         <marker
           id="arrow"
@@ -61,7 +66,7 @@ const Arrows: React.FC<IProps> = ({ amount, maxWidth }) => {
       </defs>
       {amount === 1 && renderSingleLine()}
       {amount > 1 && renderMultipleLines()}
-    </svg>
+    </StyledSvg>
   );
 };
 

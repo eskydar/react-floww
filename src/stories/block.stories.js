@@ -3,7 +3,7 @@ import { withKnobs, number, boolean } from "@storybook/addon-knobs";
 import Block from "../Block";
 
 export default {
-  title: "Block",
+  title: "Components|Block",
   decorators: [withKnobs]
 };
 

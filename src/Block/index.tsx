@@ -7,9 +7,11 @@ import Arrows from "../Arrows";
 
 const width = 320;
 
-const StyledWrapper = styled.div`
-  padding-left: ${props => props.offsetLeft ? width / 2 : 0}px;
-`
+const StyledContainer = styled.div`
+  left: ${props => props.left}px;
+  top: ${props => props.top}px;
+  position: absolute;
+`;
 
 const StyledBlock = styled.div`
   width: ${width}px;
@@ -17,7 +19,7 @@ const StyledBlock = styled.div`
   font-family: "Roboto";
   position: relative;
   box-sizing: border-box;
-  left: ${props => props.offsetLeft}px;
+  background: white;
 `;
 
 const StyledTitle = styled.div`
@@ -48,19 +50,21 @@ interface IProps {
   description: string;
   attaching?: boolean;
   connections?: number;
+  position?: any;
 }
 
 const TestComponent: React.FC<IProps> = ({
   title,
   description,
   attaching = false,
-  connections = 0
+  connections = 0,
+  position = {}
 }) => {
-  const maxWidth = connections > 2 ? (width + 20) * (connections - 1) : width;
+  const maxWidth = connections > 2 ? (width + (connections * 20)) * (connections - 1) : width + (connections * 20);
   const offsetLeft = connections > 1 ? maxWidth / 2 - width / 2 : 0;
   return (
-    <StyledWrapper offsetLeft={connections > 1}>
-      <StyledBlock offsetLeft={offsetLeft}>
+    <StyledContainer top={position.top} left={position.left || offsetLeft}>
+      <StyledBlock>
         <StyledTitle>
           <StyledIconWrapper>
             <FaQuestionCircle />
@@ -71,7 +75,7 @@ const TestComponent: React.FC<IProps> = ({
         {attaching && <Connector />}
       </StyledBlock>
       {connections > 0 && <Arrows amount={connections} maxWidth={maxWidth} />}
-    </StyledWrapper>
+    </StyledContainer>
   );
 };
 
